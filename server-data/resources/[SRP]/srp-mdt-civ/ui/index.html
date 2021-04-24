@@ -1,0 +1,470 @@
+<html style="overflow-y: hidden;">
+<head>
+    <style>
+        body {
+            display: none;
+        }
+        #content {
+            position: absolute;
+            border-radius: 5px;
+            background-color: #011b37;
+            width: 75%;
+            height: 80%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        #badge {
+            position: fixed;
+            display: inline-block;
+            left: 3%;
+            top: 2%;
+            max-width: 175px;
+            height: auto;
+            background-color: #011b37;
+        }
+        #main {
+            position: relative;
+            text-align: center;
+            top: 10%;
+            width: 80%;
+            margin: auto;
+        }
+        #banner {
+            position: fixed;
+            display: inline-block;
+            bottom: 10%;
+            right: 1%;
+            max-width: 300px;
+            height: auto;
+            opacity: 0.3;
+        }
+        #mugshot {
+            display: inline-block;
+            max-width: 215px;
+            height: auto;
+            border: 2px solid #fbbe28;
+            user-select: none;
+        }
+        .report-input {
+            font-family: "Courier New";
+            border-width:0px;
+            border:none;
+            color: #00a2d6;
+            font-size: 12pt;
+            padding: 0px 0px 0px 0px;
+            width: 550px;
+            margin-right: 10px;
+            text-overflow: ellipsis;
+            text-align: left;
+            font-weight: bolder;
+        }
+        .page-title {
+            margin-bottom: 30px;
+        }
+        .line {
+            position: fixed;
+            width: 100%;
+            height: 1.5%;
+            background-color: #fbbe28;
+        }
+        .nav-active {
+            text-decoration: underline;
+            text-decoration-color: #fbbe28;
+        }
+        .noselect {
+            user-select: none;
+        }
+        .left-side {
+            float: left;
+            max-width: 50%;
+            max-height: 550px;
+            overflow-y: auto;
+            height: auto;
+            text-align: left;
+            user-select: none;
+        }
+        .right-side {
+            position: absolute;
+            left: 65%;
+            right: 10%;
+            width: 35%;
+            max-width: 300%;
+            max-height: 550px;
+            overflow-y: auto;
+            height: auto;
+            text-align: left;
+            user-select: none;
+        }
+        .modal {
+            z-index: 3;
+            display: none;
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0,0,0);
+            background-color: rgba(0,0,0,0.7)
+        }
+        .modal-content {
+            margin: auto;
+            background-color: #011b37;
+            position: relative;
+            padding: 20px 20px;
+            outline: 2px solid #fbbe28;
+            top: 40%;
+            width: 30%;
+        }
+        br {
+            user-select: none;
+        }
+        h2, h3 {
+            font-family: "Arial Black";
+            user-select: none;
+            color: #fbbe28;
+            margin: 1px 1px 1px 1px;
+        }
+        h4 {
+            font-family: "Courier";
+            font-weight: bolder;
+            font-size: 14px;
+            user-select: none;
+            color: #00a2d6;
+            margin: 1px 1px 1px 1px;
+        }
+        p {
+            font-family: "Courier";
+            color: white;
+        }
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        li {
+            font-family: "Courier";
+            font-weight: bolder;
+            color: white;
+            float: left;
+            padding-left: 16px;
+            padding-right: 16px;
+            border-right: 2px solid #fbbe28;
+        }
+        li:last-child {
+            border-right: none;
+        }
+        button {
+            background-color: #fbbe28;
+            color: #011b37;
+            font-family: "Arial";
+            font-weight: bolder;
+            border: 4px solid #fbbe28;
+            font-size: 12pt;
+            text-align: center;
+            padding: 4px 3px;
+        }
+        input {
+            background-color: #011b37;
+            font-family: "Courier New";
+            border: 2px solid #fbbe28;
+            color: #00a2d6;
+            font-size: 12pt;
+            padding: 7px 15px 5px 15px;
+            margin-right: 10px;
+            text-overflow: ellipsis;
+            text-align: left;
+        }
+        textarea {
+            background-color: #011b37;
+            white-space: pre-line;
+            white-space: pre-wrap;
+            font-family: "Courier New";
+            font-weight: bolder;
+            font-size: 14px;
+            border-width:0px;
+            border:none;
+            color: #00a2d6;
+            font-size: 12pt;
+            padding: 0px 0px 0px 0px;
+            width: 550px;
+            margin-right: 10px;
+            text-overflow: ellipsis;
+            text-align: left;
+            outline: none;
+        }
+        th {
+            font-family: "Courier New";
+            font-weight: bolder;
+            font-size: 14px;
+            color: white;
+            padding: 5px 10px;
+            text-align: center;
+            border-bottom: 3px solid #fbbe28;
+        }
+        td {
+            font-family: "Courier New";
+            font-size: 14px;
+            color: #00a2d6;
+            padding: 10px;
+            text-align: center;
+            border-top: 1px solid #fbbe28;
+        }
+        table {
+            border-collapse: collapse;
+            column-gap: 3px solid #fbbe28;
+        }
+        table td + td { 
+            border-left: 2px solid #fbbe28; 
+        }
+        table th + th { 
+            border-left: 2px solid #fbbe28; 
+        }
+        input:focus {
+            outline: none;
+        }
+        button:focus {
+            outline: none;
+        }
+        button:hover {
+            background-color: #00a2d6;
+            border-color: #00a2d6;
+        }
+        ::-webkit-scrollbar {
+            width: 5px;
+        }
+        ::-webkit-scrollbar-track {
+            box-shadow: inset 0 0 5px grey; 
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #fbbe28; 
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div id="content">
+        <div class="line" style="top: 10%;"></div>
+        <img src="badge.png" id="badge" class="noselect">
+        <!-- <img src="footer.png" id="banner" class="noselect"> -->
+        
+        <p class="noselect" style="font-family: 'Georgia'; font-style: italic; font-size: 20pt; text-align: center;">Public Records Database</p>
+        <p class="noselect" style="position: fixed; left: 17%; top: 5.5%">Welcome, {{ officer.name }}.</p>
+        <button type="button" class="noselect" v-on:click="closeMDT()" style="position: fixed; right: 10%; top: 5.5%">LOGOUT</button>
+
+        <div style="position: fixed; left: 16%; top: 12.5%;">
+            <ul>
+                <li v-on:click="changePage('Search Offenders')" id="search-offenders" class="noselect">Search Persons</li>
+            </ul>
+        </div>
+
+        <main id="main" style="height: 550px;">
+
+            <div v-if="page == 'Search Reports'">
+
+                <h2 class="page-title">SEARCH DATABASE</h2>
+
+                <form class="noselect">
+                    <input v-model="report_search" type="text" class="noselect" placeholder="Name or Report ID" required>
+                    <button v-on:click="ReportSearch()" type="button" class="noselect" >SEARCH</button>
+                </form>
+                
+                <br />
+
+                <div class="left-side" style="max-height: 450px; width: 500px;">
+                    <h3>DATE</h3>
+                    <h4 v-if="report_selected.date"> {{ report_selected.date }} </h4>
+                    <h4 v-else-if="report_selected.date == null"> ... </h4>
+                    <h3>NAME</h3>
+                    <h4 v-if="report_selected.name" v-on:click="OpenOffenderDetailsById(report_selected.char_id);"> {{ report_selected.name }} </h4>
+                    <h4 v-else-if="report_selected.name == null"> ... </h4>
+                    <h3>INCIDENT #{{ report_selected.id}}</h3>
+                    <h4 v-if="report_selected.title"> {{ report_selected.title }} </h4>
+                    <h4 v-else-if="report_selected.title == null"> ... </h4>
+                    <h3>CHARGES</h3>
+                    <h4 v-if="report_selected.charges == null"> ... </h4>
+                    <span v-for="(amount, offense in report_selected.charges" :key="offense">
+                        <h4>
+                            {{ offense }} (x{{ amount }})
+                        </h4>
+                    </span>
+                    <h4 v-if="report_selected.jailtime">Sentence: {{ report_selected.jailtime }} months</h4>
+                    <h3>INCIDENT OFFICER</h3>
+                    <h4 v-if="report_selected.author"> {{ report_selected.author }} </h4>
+                    <h4 v-else-if="report_selected.author == null"> ... </h4>
+                    <br />
+                </div>
+
+                <div class="right-side" style="max-height: 435px;">
+                    <div v-if="report_results.results">
+                        <h3>SEARCH RESULTS</h3>
+                        <h4 style="margin: 10px 1px 30px 1px;">Finding results for '{{ report_results.query }}'...</h4>
+                        <span v-if="report_results.results" v-for="result in report_results.results">
+                            <h4 style="font-size: 12px; margin-bottom: 3px;"> {{ result.date }} - ID: {{ result.id }} </h4>
+                            <button type="button" class="noselect" v-on:click="report_selected = result;" style="margin-bottom: 10px; width: 100%; padding: unset;"> {{ result.title }} </button>
+                            <br />
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div v-if="page == 'Search Offenders'">
+
+                <h2 class="page-title">SEARCH DATABASE</h2>
+
+                <form class="noselect">
+                    <input v-model="offender_search" type="text" class="noselect" placeholder="Full or partial name" required>
+                    <button v-on:click="OffenderSearch()" type="button" class="noselect">SEARCH</button>
+                </form>
+                
+                <br />
+
+                <div class="left-side" style="max-height: 450px;">
+                    <h3>NAME</h3>
+                    <h4 v-if="offender_selected.first_name"> {{ offender_selected.first_name }} {{ offender_selected.last_name }} </h4>
+                    <h4 v-else-if="offender_selected.name == null"> ... </h4>
+                    <h3>NOTES</h3>
+                    <h4 v-if="offender_selected.notes"> {{ offender_selected.notes }} </h4>
+                    <h4 v-if="offender_selected.haswarrant"> {{ offender_selected.first_name}} {{offender_selected.last_name}} has an active warrant... </h4>
+                    <h4 v-else-if="offender_selected.notes == '' && !offender_selected.haswarrant"> ... </h4>
+                   
+                    <h3>CONVICTIONS</h3>
+                    <h4 v-if="offender_selected.convictions == null"> ... </h4>
+                    <span v-else-if="offender_selected.convictions" v-for="(value, name) in offender_selected.convictions">
+                        <h4>{{ name }} x{{ value }}</h4>
+                    </span>
+                    <br />
+                </div>
+
+                <div class="right-side" style="max-height: 435px">
+                    <div v-if="offender_results.query">
+                        <h3>SEARCH RESULTS</h3>
+                        <h4 style="margin: 10px 1px 30px 1px;">Finding results for '{{ offender_results.query }}'...</h4>
+                        <span v-if="offender_results.results" v-for="offender in offender_results.results">
+                            <button type="button" class="noselect" v-on:click="OpenOffenderDetails(offender.id)" style="margin-bottom: 10px; width: 100%; padding: unset;">{{ offender.first_name }} {{ offender.last_name }}</button>
+                            <br />
+                        </span>
+                    </div>
+
+                    <div v-else-if="offender_results.results == false">
+                        <img v-if="offender_selected.mugshot_url" v-bind:src="offender_selected.mugshot_url" alt="mugshot" id="mugshot">
+                        <img v-else-if="offender_selected.mugshot_url == ''" src="mugshot.png" alt="mugshot" id="mugshot">
+                    </div>
+                </div>
+
+            </div>
+
+            <div v-if="page == 'Report Details'">
+                <h2 class="page-title">REPORT DETAILS</h2>
+                <br />
+                <div class="left-side" style="max-width: 1000px; float: unset; margin: 0 auto; max-height: 475px;">
+                    <h3>DATE</h3>
+                    <h4 v-if="report_selected.date"> {{ report_selected.date }} </h4>
+                    <h4 v-else-if="report_selected.date == null"> ... </h4>
+                    <h3>NAME</h3>
+                    <h4 v-if="report_selected.name" v-on:click="OpenOffenderDetailsById(report_selected.char_id)"> {{ report_selected.name }} </h4>
+                    <h4 v-else-if="report_selected.name == null"> ... </h4>
+                    <template v-if="report_edit.enable == false">
+                        <h3>INCIDENT #{{report_selected.id}}</h3>
+                        <h4 v-if="report_selected.title"> {{ report_selected.title }} </h4>
+                        <h4 v-else-if="report_selected.title == null"> ... </h4>
+                    </template>
+                    <template v-else-if="report_edit.enable == true">
+                        <h3>INCIDENT #{{report_selected.id}} (EDIT)</h3>
+                        <input v-model="report_edit.data.title" type="text" class="noselect" placeholder="Enter report title" class="report-input" style="font-size: 14px;" required>
+                    </template>
+                    <template v-if="report_edit.enable == false">
+                        <h3>DETAILS</h3>
+                        <h4 v-if="report_selected.incident" style="white-space: pre-line; white-space: pre-wrap;">{{ report_selected.incident }}</h4>
+                        <h4 v-else-if="report_selected.incident == null"> ... </h4>
+                        <h4 v-if="report_selected.jailtime">Sentence: {{ report_selected.jailtime }} months</h4>
+                    </template>
+                    <h3>CHARGES</h3>
+                    <span v-for="(amount, offense) in report_selected.charges" :key="offense">
+                        <h4>
+                            {{ offense }} (x{{ amount }})
+                        </h4>
+                    </span>
+                    <h3>INCIDENT OFFICER</h3>
+                    <h4 v-if="report_selected.author"> {{ report_selected.author }} </h4>
+                    <h4 v-else-if="report_selected.author == null"> ... </h4>
+                    <br />
+                    <button type="button" v-on:click="changePage('Search Reports')" id="search-reports" class="noselect">BACK TO REPORTS</button>
+                    <template v-else-if="report_edit.enable">
+                        <button type="button" v-if="report_edit.data.incident && report_edit.data.title" v-on:click="SaveReportEditChanges();" class="noselect">SAVE</button>
+                        <button type="button" v-on:click="ToggleReportEdit();" class="noselect">CANCEL</button>
+                    </template>
+                </div>
+            </div>
+
+            <div v-if="page == 'Warrants'">
+                <h2 class="page-title">ACTIVE WARRANTS</h2>
+                <form class="noselect">
+                    <input v-model="warrant_search" type="text" class="noselect" placeholder="Filter warrants" required>
+                </form>
+                <br />
+
+                <div style="max-width: 1000px; width: 1000px; float: unset; margin: 0 auto;">
+                    <table v-if="filtered_warrants.length > 0" style="margin: 0 auto;">
+                        <tr>
+                            <th>Name</th>
+                            <th>Issue Date</th>
+                            <th style="column-width: 140px;">Expires</th>
+                        </tr>
+                        <tr v-for="warrant in filtered_warrants" v-on:click="changePage('Warrant Details'); warrant_selected = warrant;">
+                            <td>{{warrant.name}}</td>
+                            <td style="overflow: hidden; text-overflow: ellipsis; max-width: 500px; max-height: 10px;">{{warrant.date}}</td>
+                            <td style="padding: 5px;">{{warrant.expire_time}}</td>
+                        </tr>
+                    </table>
+                    <h4 v-else-if="filtered_warrants.length == 0" style="text-align: center; font-size: 20px; font-weight: bold;"><br />No warrants found!</h4>
+                    <div style="bottom: 0%">
+                    </div>
+                </div>
+            </div>
+
+            <div v-if="page == 'Warrant Details'">
+                <h2 class="page-title">WARRANT DETAILS</h2>
+                <br />
+                <div class="left-side" style="max-width: 1000px; float: unset; margin: 0 auto;">
+                    <h3>DATE</h3>
+                    <h4 v-if="warrant_selected.date"> {{ warrant_selected.date }} </h4>
+                    <h4 v-else-if="warrant_selected.date == null"> ... </h4>
+                    <h3>NAME</h3>
+                    <h4 v-if="warrant_selected.name" v-on:click="OpenOffenderDetailsById(warrant_selected.char_id)"> {{ warrant_selected.name }} </h4>
+                    <h4 v-else-if="warrant_selected.name == null"> ... </h4>
+                    <h3>CHARGES</h3>
+                    <span v-for="(amount, offense) in warrant_selected.charges" :key="offense">
+                        <h4>
+                            {{ offense }} (x{{ amount }})
+                        </h4>
+                    </span>
+                    <h3>AUTHOR</h3>
+                    <h4 v-if="warrant_selected.author"> {{ warrant_selected.author }} </h4>
+                    <h4 v-else-if="warrant_selected.author == null"> ... </h4>
+                    <h3>EXPIRES</h3>
+                    <h4 v-if="warrant_selected.expire_time"> {{ warrant_selected.expire_time }} </h4>
+                    <h4 v-else-if="warrant_selected.expire_time == null"> ... </h4>
+                    <br />
+                    <button type="button" v-on:click="changePage('Warrants')" id="warrants" class="noselect">BACK TO WARRANTS</button>
+                </div>
+            </div>
+        </main>
+        
+        <p class="noselect" style="font-family: 'Georgia'; font-style: italic; font-size: 20pt; position: fixed; bottom: 1%; right: 5.5%; direction: rtl;">San Andreas Public Records</p>
+        <div class="line" style="bottom: 10%"></div>
+    </div> 
+
+
+    <script src="vue.min.js"></script>
+    <script
+        src = "https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity = "sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin = "anonymous">
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>

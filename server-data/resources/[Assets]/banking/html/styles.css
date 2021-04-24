@@ -1,0 +1,506 @@
+.console {
+    background-color: rgba(255, 86, 60, 0.3);
+    width: 500px;
+    min-height: 30px;
+    color: white;
+    position: absolute;
+    top: 5px;
+    left: 200px;
+}
+
+html {
+    overflow: hidden;
+}
+
+@font-face {
+    font-family: 'pricedown';
+    src: url(pricedown.ttf);
+}
+
+#cursor {
+    position: absolute;
+    z-index: 99999999;
+    display: none;
+}
+
+.sans {
+    font-family: 'Open Sans', sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 120;
+    right: 40;
+    /* width: 1400px;  height: 200px; */
+}
+
+#balance {
+    float: right;
+    font-family: pricedown;
+    font-weight: 400;
+    font-size: 2rem;
+    color: white;
+    padding: 4px;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    margin: 0;
+    margin-right: 6px;
+    padding: 0;
+}
+
+#cash {
+    float: right;
+    font-family: pricedown;
+    font-weight: 400;
+    font-size: 2rem;
+    color: white;
+    padding: 4px;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    margin: 0;
+    margin-right: 6px;
+    padding: 0;
+}
+
+#add-balance {
+    float: right;
+    font-family: pricedown;
+    font-weight: 400;
+    font-size: 29px;
+    color: white;
+    padding: 4px;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    margin: 0;
+    margin-right: 6px;
+    margin-top: 6px;
+    padding: 0;
+}
+
+#icon {
+    height: 21px;
+    width: auto;
+    margin-right: 10px;
+}
+
+.green {
+    color: rgb(0, 125, 0);
+    font-weight: 700;
+    margin-right: 6px;
+}
+
+.red {
+    color: rgb(255, 0, 0);
+}
+
+#pre {
+    font-size: 0.8rem;
+    margin-right: 5px;
+}
+
+.balance {
+    display: inline-block;
+    height: 30px;
+    width: 100%;
+}
+
+.cashtransaction {
+    display: inline-block;
+    height: 30px;
+    width: 100%;
+}
+
+.text {
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: normal;
+    color: white;
+}
+
+.buttonactions {
+    border-radius: 3px;
+    width: 90px;
+    height: 29px;
+    border: none;
+    outline: none;
+}
+
+.idk {
+    background-color: rgba(43, 69, 96, 1.0);
+    height: 535px;
+    width: 683px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    z-index: 19000;
+}
+
+.idk2 {
+    background-color: rgba(43, 69, 96, 1.0);
+    height: 500px;
+    width: 653px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    z-index: 19000;
+}
+
+.idk3 {
+    background-color: rgba(43, 69, 96, 1.0);
+    height: 530px;
+    width: 653px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    z-index: 19000;
+}
+
+.idk4 {
+    background-color: rgba(43, 69, 96, 1.0);
+    height: 500px;
+    width: 653px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    z-index: 19000;
+}
+
+.idk5 {
+    background-color: rgba(43, 69, 96, 1.0);
+    height: 500px;
+    width: 653px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    z-index: 19000;
+}
+
+.blur-all {
+    -webkit-filter: blur(10px);
+    -moz-filter: blur(10px);
+    -o-filter: blur(10px);
+    -ms-filter: blur(10px);
+    filter: blur(10px);
+}
+
+body i {
+    font-family: 'FontAwesome'!important;
+    position: relative;
+    left: -10px;
+}
+
+.titlewithdraw {
+    white-space: pre-wrap;
+    margin-top: 15px;
+    font-size: 36px;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+}
+
+.accountstext {
+    left: 14.5%;
+    letter-spacing: 0.00px;
+    line-height: normal;
+    position: absolute;
+    text-align: left;
+    top: 17%;
+    width: 135px;
+    font-family: 'Roboto', Helvetica;
+    font-size: 28px;
+    font-style: normal;
+    /* font-weight: bold; */
+    color: white;
+}
+
+.textabc {
+    font-family: 'Roboto', Helvetica;
+    font-size: 22px;
+    font-style: normal;
+    color: white;
+    margin-left: 15px;
+}
+
+.personalbox {
+    background-color: rgba(28, 56, 85, 1.0);
+    height: 160px;
+    position: absolute;
+    left: 14.5%;
+    top: 21%;
+    border-radius: 5px;
+    width: 375px;
+    border: 0.5px solid white;
+}
+
+.bussinessbox {
+    background-color: rgba(28, 56, 85, 1.0);
+    height: 160px;
+    border-radius: 5px;
+    border: 0.5px solid white;
+    position: absolute;
+    left: 14.5%;
+    top: 38%;
+    width: 375px;
+}
+
+.transaction {
+    display: inline-block;
+    height: 30px;
+    width: 100%;
+}
+
+.full-screen {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.bank-container {
+    width: 1430px;
+    height: 750px;
+    background-color: rgba(34, 39, 48, 1.0);
+    /* border: 3px solid rgba(34, 34, 34, 0.452); */
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden;
+    display: none;
+    z-index: 9999999;
+}
+
+.loading {
+    width: 1300px;
+    height: 200px;
+    background-color: rgba(34, 39, 48, 1.0);
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden;
+    /* display: none; */
+    z-index: 9999999;
+}
+
+.header {
+    width: 100%;
+    height: 100px;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.header .logo {
+    max-height: 80%;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.header .header-right {
+    color: rgb(119, 119, 119);
+    margin-right: 25px;
+}
+
+.header-right h3 {
+    float: right;
+    margin-top: 30px;
+}
+
+.body {
+    width: 100%;
+    height: 600px;
+    display: none;
+}
+
+.centered {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: 50px;
+    width: 80%;
+    height: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.button {
+    flex-grow: 1;
+    align-items: center;
+    height: 40px;
+    text-align: center;
+    margin-left: 40px;
+    margin-right: 40px;
+    width: 300px;
+    background: rgba(1, 126, 188, 0.678);
+    background-image: linear-gradient(to bottom, rgba(1, 126, 188, 0.678), rgba(1, 126, 188, 0.678));
+    border-radius: 4px;
+    color: #ffffff;
+    font-size: 1.5em;
+    padding: 20px 20px 10px 20px;
+    text-decoration: none;
+}
+
+.button:focus,
+.submit {
+    outline: 0;
+}
+
+.number-display {
+    flex-grow: 1;
+    align-items: center;
+    height: 70px;
+    text-align: center;
+    margin-left: 40px;
+    margin-right: 40px;
+    width: 100%;
+    background: #017ebc;
+    background-image: linear-gradient(to bottom, #f4f5f5, #dfdddd);
+    border-radius: 4px;
+    color: #777;
+    font-size: 2em;
+    padding: 10px 20px;
+}
+
+.number-display p {
+    margin: 0;
+    padding: 0;
+    padding-top: 10px;
+}
+
+input[type=submit],
+.submit {
+    height: 70px;
+    text-align: center;
+    width: 100%;
+    background: #017ebc;
+    background-image: linear-gradient(to bottom, #017ebc, #005285);
+    border-radius: 4px;
+    color: #ffffff;
+    font-size: 1.5em;
+    padding: 20px 20px 20px 20px;
+    text-decoration: none;
+    border: none;
+}
+
+.form {
+    max-width: 74%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+}
+
+.inputaa {
+    position: absolute;
+    font-family: 'Roboto', Helvetica;
+    margin: auto;
+    background-color: transparent;
+    outline: none;
+    height: 44px;
+    font-size: 16px;
+    width: 328px;
+    color: rgba(198, 198, 198, 1.0);
+    border: none;
+    stroke: none;
+    margin-left: 180px;
+    margin-top: 50px;
+}
+
+.dollarrrr {
+    background-color: transparent;
+    color: rgba(198, 198, 198, 1.0);
+    font-family: 'Roboto', Helvetica;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    height: 44px;
+    left: 533px;
+    width: 56px;
+}
+
+.committt {
+    background-color: transparent;
+    color: rgba(198, 198, 198, 1.0);
+    font-family: 'Roboto', Helvetica;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    height: 44px;
+    left: 533px;
+    width: 56px;
+}
+
+.box {
+    background-color: rgba(46, 70, 95, 1.0);
+    ;
+    height: fit-content;
+    border-radius: 4px;
+    width: 957px;
+}
+
+.transactionhistory {
+    position: absolute;
+    top: 21%;
+    color: white;
+    left: 35.8%;
+    height: 680px;
+    overflow-y: auto;
+}
+
+div::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 1px rgba(28, 56, 85, 1.0);
+    ;
+    border-radius: 5px;
+}
+
+div::-webkit-scrollbar {
+    width: 3px;
+}
+
+div::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(28, 56, 85, 1.0);
+    ;
+    background-color: black;
+}
+
+@media only screen and (min-width: 2560px) {
+    .personalbox {
+        margin-top: 70px;
+        margin-left: 250px;
+    }
+    .bussinessbox {
+        margin-left: 250px;
+    }
+    .transactionhistory {
+        margin-top: 70px;
+        margin-left: 120px;
+    }
+    .accountstext {
+        margin-top: 80px;
+        margin-left: 238px;
+    }
+    #acctext {
+        position: absolute;
+        left: 15%;
+    }
+}
